@@ -3,7 +3,7 @@ version: '3.8'
 services:
   www:
     build:
-      context: .
+      context: .  # Ensure this points to the directory containing the Dockerfile
       dockerfile: Dockerfile
     volumes:
       - ./html:/var/www/html
@@ -19,6 +19,7 @@ services:
       MYSQL_DATABASE: dictionary
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
 
@@ -26,11 +27,11 @@ services:
     image: phpmyadmin
     restart: always
     ports:
-      - 8081:80
+      - "8082:80"  # Changed from 8081 to 8082
     depends_on:
       - db
     environment:
       - PMA_ARBITRARY=1
 
 volumes:
-  mysql:
+  mysql_data:
