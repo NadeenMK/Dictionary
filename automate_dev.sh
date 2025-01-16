@@ -22,15 +22,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Step 3: Run the deploy.sh script
-echo "Running deployment script..."
-bash $DEPLOY_SCRIPT
-if [ $? -ne 0 ]; then
-    echo "Error: Deployment script failed."
-    exit 1
-fi
 
-# Step 4: Trigger the Jenkins job
+# Step 3: Trigger the Jenkins job
 echo "Triggering Jenkins job..."
 curl -X POST "$JENKINS_JOB_URL/build?token=$JENKINS_AUTH_TOKEN" --user "nadeen:$JENKINS_AUTH_TOKEN"
 if [ $? -ne 0 ]; then
@@ -38,5 +31,12 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Step 4: Run the deploy.sh script
+echo "Running deployment script..."
+bash $DEPLOY_SCRIPT
+if [ $? -ne 0 ]; then
+    echo "Error: Deployment script failed."
+    exit 1
+fi
 
 echo "Automation complete!"

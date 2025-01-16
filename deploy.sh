@@ -3,4 +3,4 @@ docker-compose down
   
   
 # Build and run containers
-docker-compose up  --build
+docker-compose up -t --build
