@@ -1,4 +1,6 @@
 #!/bin/bash
+#sudo chown -R $(whoami):$(whoami) /var/www/html/testgit1/.git
+#chmod -R u+rw /var/www/html/testgit1/.git
 
 # Variables
 GIT_REPO="https://github.com/NadeenMK/Dictionary.git"
