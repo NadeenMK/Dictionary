@@ -2,7 +2,7 @@
 session_start();
 include('db_config.php'); // Ensure this file establishes a PDO connection as $pdo 
 
-// Check if form is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the word from the form
     $word = $_POST['word'];
@@ -95,7 +95,7 @@ if ($message) {
 </head>
 <body>
     <div class="container">
-        <h1>Dictionary Lookup</h1>
+        <h1>Dictionary Lookup test</h1>
         <form action="index.php" method="post">
             <input type="text" name="word" placeholder="Enter a word" required>
             <input type="submit" value="Search">
